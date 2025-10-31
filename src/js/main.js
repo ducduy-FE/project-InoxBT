@@ -2,11 +2,15 @@ import AOS from "aos";
 import lozad from "lozad";
 import { setBackgroundElement, detectCloseElement, buttonToTop, clickScrollToDiv, appendCaptchaASP, menuSpy, stickElementToEdge } from "./helper";
 import { header } from "./header";
+import { tabsletInit } from "./tabslet";
+import { swiperInit } from "./swiper";
 $(document).ready(function () {
 	setBackgroundElement();
 	stickElementToEdge();
 	menuSpy();
 	header.init();
+	tabsletInit()
+	// swiperInit()
 });
 
 /*==================== Aos Init ====================*/

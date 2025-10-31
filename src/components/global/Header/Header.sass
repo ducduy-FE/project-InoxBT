@@ -1,7 +1,15 @@
 header
-	@apply fixed top-0 left-0 w-screen z-10 shadow-md
+	@apply sticky bg-white top-0 left-0 w-screen z-10 shadow-md
 	.header
 		@apply container-px py-2 flex items-center justify-between
 		.item-navbar
-			@apply font-semibold text-h5 text-gray-700 hover:text-primary-1 hover:border-b-3 border-primary-1 pb-2 transition-all
-
+			@apply font-semibold text-h5 text-gray-700 hover:text-primary-1 hover:border-b-2 border-primary-1 pb-2 transition-all
+		.active
+			@apply text-primary-1 border-b-2 border-primary-1
+	.tabslet-content
+		@apply flex flex-col gap-4
+	.tabslet-tab 
+		li 
+			@apply hover:bg-primary-2	
+		.active
+			@apply text-white bg-primary-2

@@ -116,7 +116,24 @@ export const header = {
     // Khởi tạo ban đầu
     addEvents();
   },
+  dropdownHeader() {
+    const toggle = $("#steelToggle");
+    const dropdown = $("#steelDropdown");
+    const togglehref= $('#steelToggle .item-navbar')
 
+    toggle.on("click", function (e) {
+      e.stopPropagation();
+      dropdown.toggleClass("hidden");
+      togglehref.toggleClass('active')
+    });
+
+    $(document).on("click", function (e) {
+      if (!$(e.target).closest("#steelDropdown, #steelToggle").length) {
+        dropdown.addClass("hidden");
+        togglehref.removeClass("active");
+      }
+    });
+  },
   init: function () {
     headerSearch();
     header.scrollActive();
@@ -124,6 +141,7 @@ export const header = {
     header.initVariable();
     header.changeLaguage();
     header.animateSearch();
+    header.dropdownHeader();
   },
 };
 document.addEventListener(

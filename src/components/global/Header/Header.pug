@@ -8,10 +8,76 @@ header
         a.item-navbar(href="/") Trang chủ 
       li
         a.item-navbar(href="/") Giới thiệu
-      li
-        a.item-navbar(href="/") 
-          | Thép không rỉ 
-          <i class="fa-solid fa-caret-down ml-2"></i>
+      li#steelToggle.relative
+        a.item-navbar(href="javascript:void(0)")
+          | Thép không rỉ
+          i.fa-solid.fa-caret-down.ml-2
+        div#steelDropdown(class='absolute left-0 translate-y-10 top-full hidden bg-white shadow-xl rounded-lg overflow-hidden xl:rem:w-[500px]')
+          .tabslet(class='grid grid-cols-2')
+            ul(class=' tabslet-tab bg-primary-1 text-white flex flex-col py-6')
+              li.py-5.px-6.cursor-pointer.active
+                a(href="#tab-1" class='flex justify-between items-center w-full') 
+                  span Inox 304
+                  <i class="fa-solid fa-angle-right"></i>
+              li.py-5.px-6.cursor-pointer
+                a(href="#tab-2" class='flex justify-between items-center w-full') 
+                  span Inox 316
+                  <i class="fa-solid fa-angle-right"></i>
+              li.py-5.px-6.cursor-pointer
+                a(href="#tab-3" class='flex justify-between items-center w-full')
+                  span Inox 201
+                  <i class="fa-solid fa-angle-right"></i>
+              li.py-5.px-6.cursor-pointer
+                a(href="#tab-4" class='flex justify-between items-center w-full')
+                  span Inox 430
+                  <i class="fa-solid fa-angle-right"></i>
+              li.py-5.px-6.cursor-pointer
+                a(href="#tab-5" class='flex justify-between items-center w-full')
+                  span Inox 310s
+                  <i class="fa-solid fa-angle-right"></i>
+              li.py-5.px-6.cursor-pointer3
+                a(href="#tab-6" class='flex justify-between items-center w-full') 
+                  span Inox Duplex
+                  <i class="fa-solid fa-angle-right"></i>
+            ul(class='bg-white text-gray-700 px-4 py-6')
+              li#tab-1.tabslet-content
+                h3.font-semibold.mb-2 Inox 304
+                ul.space-y-4
+                  li Inox Tấm
+                  li Inox Cuộn
+                  li Ống hộp
+                  li Cây đặc (láp)
+                  li Thanh La-U-V-V-Lục giác
+              li#tab-2.tabslet-content
+                h3.font-semibold.mb-2 Inox 316
+                ul.space-y-1
+                  li Tấm
+                  li Cuộn
+                  li Ống hộp
+              li#tab-3.tabslet-content
+                h3.font-semibold.mb-2 Inox 201
+                ul.space-y-1
+                  li Cuộn
+                  li Ống hộp
+                  li Cây đặc
+              li#tab-4.tabslet-content
+                h3.font-semibold.mb-2 Inox 430
+                ul.space-y-1
+                  li La
+                  li U
+                  li V
+              li#tab-5.tabslet-content
+                h3.font-semibold.mb-2 Inox 310s
+                ul.space-y-1
+                  li Cuộn
+                  li Ống
+              li#tab-6.tabslet-content
+                h3.font-semibold.mb-2 Inox Duplex
+                ul.space-y-1
+                  li Tấm
+                  li Ống
+                  li Thanh đặc
+
       li
         a.item-navbar(href="/") Dịch vụ 
       li
@@ -37,4 +103,5 @@ header
             li.langHeader(class='flex justify-center -translate-x-1er items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer') VN
             li.langHeader(class='flex justify-center items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer') EN
       include ./HeaderHambuger
+
   .header-moblie

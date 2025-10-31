@@ -92,7 +92,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      primary: ["Gilroy", "sans-serif"],
+      primary: ["SVN-Gilroy", "sans-serif"],
       awesome: ['"Font Awesome 6 Pro"'],
       awesomeSharp: ['"Font Awesome 6 Sharp"'],
     },
@@ -558,6 +558,18 @@ module.exports = {
           [`@media (min-width: ${theme("screens.xl")})`]: {
             paddingLeft: "calc(86/1920*100rem)",
             paddingRight: "calc(86/1920*100rem)",
+          },
+        },
+        ".container-px-60": {
+          paddingLeft: "calc(40/1920*100rem)",
+          paddingRight: "calc(40/1920*100rem)",
+          [`@media (min-width: ${theme("screens.lg")})`]: {
+            paddingLeft: "calc(60/1920*100rem)",
+            paddingRight: "calc(60/1920*100rem)",
+          },
+          [`@media (min-width: ${theme("screens.xl")})`]: {
+            paddingLeft: "calc(60/1920*100rem)",
+            paddingRight: "calc(60/1920*100rem)",
           },
         },
         ".title-64": {
