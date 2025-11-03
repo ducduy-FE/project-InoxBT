@@ -348,6 +348,7 @@ module.exports = {
         DEFAULT: "12.5px",
       },
       borderRadius: {
+        0:"0 /* 0px */",
         1: "calc(4/1920*100rem) /* 4px */",
         2: "calc(8/1920*100rem) /* 8px */",
         3: "calc(12/1920*100rem) /* 12px */",
