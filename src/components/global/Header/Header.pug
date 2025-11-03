@@ -86,7 +86,7 @@ header
         a.item-navbar(href="/") Hỗ trợ 
       li
         a.item-navbar(href="/") Liên hệ
-    ul(class='flex gap-5 items-center justify-end xl:pr-0 pr-5 ')
+    ul(class='flex gap-5 items-center justify-end xl:pr-0 md:pr-5 ')
       li#searchBox(class='sm:flex hidden items-center border rounded-2 overflow-hidden text-gray-700 text-base px-4 py-2 space-x-3 border-gray-700')
         i#searchIcon(class='fa-regular fa-magnifying-glass cursor-pointer')
         input#searchInput(type='text' placeholder='Tìm kiếm' class='flex-1 focus:outline-none hidden md:block')
@@ -104,4 +104,31 @@ header
             li.langHeader(class='flex justify-center items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer') EN
       include ./HeaderHambuger
 
-  .header-moblie
+  .mobile-menu
+    .mobile-menu-content
+      .mobile-search
+        input.search-input(type="text" placeholder="Tìm kiếm...")
+        button
+          i.fa-regular.fa-magnifying-glass
+
+      ul.mobile-nav
+        li
+          a(href="")  trang chu
+        li
+          a(href="") gioi thieu 
+        li.dropdown
+          span.dropdown-toggle
+            | Kỹ thuật – Công nghệ
+            i.fa-regular.fa-chevron-down
+          ul.dropdown-menu
+            li: a(href="#") Kiến thức nền tảng
+            li: a(href="#") Khoa học ứng dụng
+            li: a(href="#") Kỹ thuật đại cương
+        li
+          a(href="") dich vu 
+        li
+          a(href="")  tin tuc 
+        li
+          a(href="")  ho tro 
+        li
+          a(href="")  lien he
