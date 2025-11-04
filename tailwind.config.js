@@ -50,7 +50,10 @@ module.exports = {
 
       xl: "1200px",
       // => @media (min-width: 1440px) { ... }
-      "2xl" : "1444px",
+      "2xl": "1444px",
+      "zoom-125%": "1536px",
+      "zoom-150%": "1280px",
+      full: "1920px",
 
       "-xs": {
         max: "409.98px",
@@ -66,6 +69,9 @@ module.exports = {
       },
       "-xl": {
         max: "1199.98px",
+      },
+      "-2xl": {
+        max: "1443.98px",
       },
     },
     borderWidth: {
@@ -334,6 +340,10 @@ module.exports = {
       },
       backgroundImage: ({ theme }) => ({
         "linear-1": `linear-gradient(90deg, #181830 -0.01%, #1D1D38 19.26%, #141228 40.12%, #2C223A 75.47%, #231B33 99.98%)`,
+        "linear-primary": `linear-gradient(90deg, #814F2F 9%, #A58A55 27%, #E2CDB0 50%, #BDA77E 69%, #814F2F 100%)`,
+        "gray-to-white": "linear-gradient(to right, #6C7680, #FFFFFF)",
+        "radial-gray-center":
+          " radial-gradient(circle,rgba(108, 118, 128, 1) 0%, rgba(255, 255, 255, 1) 100%)",
       }),
       backgroundPosition: {
         "pos-100-0": "100% 0%",
@@ -347,7 +357,7 @@ module.exports = {
         DEFAULT: "12.5px",
       },
       borderRadius: {
-        0:"0 /* 0px */",
+        0: "0 /* 0px */",
         1: "calc(4/1920*100rem) /* 4px */",
         2: "calc(8/1920*100rem) /* 8px */",
         3: "calc(12/1920*100rem) /* 12px */",
@@ -560,42 +570,66 @@ module.exports = {
             paddingRight: "calc(86/1920*100rem)",
           },
         },
-        ".container-px-60": {
-          paddingLeft: "calc(16/1920*100rem)",
-          paddingRight: "calc(16/1920*100rem)",
+        ".title-64": {
+          fontWeight: "700",
+          fontSize: "calc(36/1920*100rem)", // 4xl
+          [`@media (min-width: ${theme("screens.md")})`]: {
+            fontSize: "calc(40/1920*100rem)", // 5xl
+          },
           [`@media (min-width: ${theme("screens.lg")})`]: {
-            paddingLeft: "calc(60/1920*100rem)",
-            paddingRight: "calc(60/1920*100rem)",
+            fontSize: "calc(48/1920*100rem)", // 6xl
           },
           [`@media (min-width: ${theme("screens.xl")})`]: {
-            paddingLeft: "calc(60/1920*100rem)",
-            paddingRight: "calc(60/1920*100rem)",
+            fontSize: "calc(64/1920*100rem)", // 64
           },
         },
-        ".bg-primary":{
-          background : "linear-gradient(45deg,#814F2F 9%,#A58A55 27%,#E2CDB0 50%,#BDA77E 69%,#814F2F 100%)",
+
+        ".bg-primary": {
+          background:
+            "linear-gradient(45deg,#814F2F 9%,#A58A55 27%,#E2CDB0 50%,#BDA77E 69%,#814F2F 100%)",
         },
         ".title-64": {
           "@apply": "text-4xl md:text-5xl lg:text-6xl xl:text-64 font-bold",
         },
         ".title-48": {
-          "@apply":
-            "text-4xl md:text-4xl xl:text-6xl font-semibold leading-[1.18]",
+          fontWeight: "600",
+          lineHeight: "1.18",
+          fontSize: "calc(36/1920*100rem)", // 4xl
+          [`@media (min-width: ${theme("screens.md")})`]: {
+            fontSize: "calc(36/1920*100rem)", // still 4xl
+          },
+          [`@media (min-width: ${theme("screens.xl")})`]: {
+            fontSize: "calc(48/1920*100rem)", // 6xl
+          },
         },
         ".title-40": {
-          "@apply": "text-4xl lg:text-5xl font-bold",
+          fontWeight: "700",
+          fontSize: "calc(36/1920*100rem)", // 4xl
+          [`@media (min-width: ${theme("screens.lg")})`]: {
+            fontSize: "calc(40/1920*100rem)", // 5xl
+          },
         },
         ".title-32": {
-          "@apply": "text-[22px] lg:text-32 leading-[1.1]",
+          fontSize: "22px",
+          lineHeight: "1.1",
         },
         ".title-28": {
-          "@apply": "text-[20px] lg:text-28",
+          fontSize: "20px",
+          [`@media (min-width: ${theme("screens.lg")})`]: {
+            fontSize: `${28 / 19.2}rem`, // rem:text-[28px]
+          },
         },
         ".title-24": {
-          "@apply": "text-[18px] lg:text-2xl",
+          fontSize: "18px",
+          [`@media (min-width: ${theme("screens.lg")})`]: {
+            fontSize: "clamp(18px,calc(24/1920*100rem),calc(24/1920*100rem))", // 2xl
+          },
         },
         ".title-20": {
-          "@apply": "text-[16px] lg:text-xl",
+          fontSize: "16px",
+          [`@media (min-width: ${theme("screens.lg")})`]: {
+            fontSize: "calc(20/1920*100rem)", // xl
+          },
         },
         ".body-14": {
           "font-size": "calc(14/1920*100rem)",
@@ -795,6 +829,24 @@ module.exports = {
                 const value = `clamp(${num1}px, ${valRem}rem, ${maxRem}rem)`;
                 decl.value = value;
               }
+            }
+          });
+        });
+      });
+    }),
+    plugin(({ addVariant, e }) => {
+      addVariant("em", ({ container, separator }) => {
+        const rootFontSize = 19.2; // This is your HTML root font-size
+        container.walkRules((rule) => {
+          rule.selector = `.${e(`em${separator}`)}${rule.selector.slice(1)}`;
+          rule.walkDecls((decl) => {
+            if (decl.value.includes("px")) {
+              // Convert the pixel number to rem
+              const value = decl.value.replace(
+                /(\d+)px/g,
+                (match, p1) => `${p1 / rootFontSize}em`
+              );
+              decl.value = value;
             }
           });
         });

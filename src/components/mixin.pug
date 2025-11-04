@@ -59,9 +59,22 @@ mixin HeaderLanguage()
 					li 
 						a(href="") 
 							span EN
-
+mixin Breadcrumb-custom(items)
+	.flex.items-center
+		each item, i in items
+			- const isLast = i === items.length - 1
+			p(
+				class=[
+					'px-2 py-0', 
+					'body-18',
+					isLast ? 'font-bold text-primary-1' : 'font-normal text-gray-700'
+				]
+			)= item
+			if !isLast
+				//- thanh ngăn cách ngắn giữa các phần tử
+				span(class="inline-block w-[1px] h-[13px] bg-gray-400 rounded mx-1")
 mixin BtnOutline(title)
 	a.btn-outline(href="/")= title 
-
 mixin BtnPrimary(title)
 	a.btn-primary(href="/")= title 
+

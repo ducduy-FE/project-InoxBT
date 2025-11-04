@@ -10,7 +10,8 @@
 		"node_modules/countup.js/dist/countUp.umd.js",
 		"plugins/menuSpy/menuspy.js",
 		"plugins/ScrollTo/jquery.scrollTo.min.js",
-		"plugins/Tabslet/jquery.tabslet.min.js"
+		"plugins/Tabslet/jquery.tabslet.min.js",
+		"src/js/countup-init.js"
 	],
 	"css": [
 		"node_modules/swiper/swiper-bundle.min.css",
