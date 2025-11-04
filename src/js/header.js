@@ -14,12 +14,35 @@ export const header = {
       $("header").removeClass("active");
     }
   },
-  mobile: function () {
+  mobile() {
     $(".header-hambuger").on("click", function () {
-      $(this).toggleClass("active");
+      $(this).toggleClass("header-hamburger-active");
       $("body").toggleClass("isOpenMenu");
     });
+    $(document).on("click", ".dropdown-toggle", function (e) {
+      e.preventDefault();
+      const $parent = $(this).closest(".dropdown");
+      const $menu = $parent.find(".dropdown-menu");
+
+      if ($parent.hasClass("open")) {
+        // Đóng dropdown hiện tại
+        $menu.stop(true, true).slideUp(250);
+        $parent.removeClass("open");
+      } else {
+        // Đóng các dropdown khác (nếu chỉ muốn 1 mở)
+        $parent
+          .siblings(".dropdown")
+          .removeClass("open")
+          .find(".dropdown-menu")
+          .slideUp(250);
+
+        // Mở dropdown được click
+        $menu.stop(true, true).slideDown(250);
+        $parent.addClass("open");
+      }
+    });
   },
+
   initVariable: function () {
     const height = $("header").height();
     document.documentElement.style.setProperty(
@@ -119,12 +142,12 @@ export const header = {
   dropdownHeader() {
     const toggle = $("#steelToggle");
     const dropdown = $("#steelDropdown");
-    const togglehref= $('#steelToggle .item-navbar')
+    const togglehref = $("#steelToggle .item-navbar");
 
     toggle.on("click", function (e) {
       e.stopPropagation();
       dropdown.toggleClass("hidden");
-      togglehref.toggleClass('active')
+      togglehref.toggleClass("active");
     });
 
     $(document).on("click", function (e) {
