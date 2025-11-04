@@ -1,0 +1,17 @@
+.btn-navigation
+  @apply bg-primary-1 border border-gray-100 px-5 py-2 text-h2 text-white flex justify-center items-center
+  @apply hover:bg-primary
+.wrap
+  @apply flex flex-col gap-base
+  .tabslet-tab
+    @apply flex justify-between flex-wrap lg:w-1/2 w-full
+    li
+      @apply py-3 cursor-pointer text-h4 font-bold
+    .active
+      @apply border-b-3 border-primary-1 text-primary-1
+.title-product
+  @apply flex flex-col gap-4 px-4 py-6 text-center
+  .name-product
+    @apply text-h4 font-bold 
+  .btn-outline
+    @include BtnOutline

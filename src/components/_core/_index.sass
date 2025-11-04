@@ -7,11 +7,16 @@
 
 body
 	@apply overflow-x-hidden
+.swiper
+	margin-inline: 0
+.section-home-banner
+	.swiper-pagination
+		@apply md:w-auto left-auto xl:right-15 xl:bottom-17 bottom-0 md:right-5 right-auto
+		.swiper-pagination-bullet
+			@apply md:aspect-square xl:rem:w-[150px] md:rem:w-[100px] rounded-0 opacity-100
+	.swiper-pagination-bullet-active .img-pagination
+		@apply	border-white border
 
-.section-home-banner .swiper-pagination
-	@apply md:w-auto left-auto xl:right-15 xl:bottom-17 bottom-0 md:right-5 right-auto
-.section-home-banner .swiper-pagination .swiper-pagination-bullet
-	@apply md:aspect-square xl:rem:w-[150px] md:rem:w-[100px] rounded-0
-	opacity: 1
-.swiper-pagination-bullet-active .img-pagination
-	@apply  border-white border
+.swiper-service
+	.swiper-pagination
+		@apply top-5 left-14 w-auto text-white text-base

@@ -1,0 +1,68 @@
+section.section-py.container-px-60.flex.flex-col.gap-base
+  .w-full.flex.justify-between
+    h1.text-h1.text-primary-1 Thép không gỉ
+    div(class=' flex gap-3 justify-between swiper-pagination right-15 -sm:hidden')
+      .btn-navigation.btn-navigation-prev
+        <i class="fa-light fa-arrow-left"></i>
+      .btn-navigation.btn-navigation-next
+        <i class="fa-light fa-arrow-right"></i>
+  .wrap(data-toggle="tabslet")
+      .border-b
+        ul.tabslet-tab
+            li.active
+                a(href="#tab1") something
+            li
+                a(href="#tab2") something
+            li
+                a(href="#tab3") something
+            li
+                a(href="#tab4") something
+      .tabslet-content.active#tab1
+        .swiper.swiper-product 
+          .swiper-wrapper
+            -for(let i = 0; i < 9; i++ )
+              .swiper-slide
+                .flex.flex-col.col-span-1.shadow-xl
+                  div(class='img-ratio ratio:pt-[430_430]') 
+                    +PugImg()
+                  .title-product 
+                    .name-product 
+                      h4 Magna veniam cillum  
+                    +BtnOutline('Xem them')
+      .tabslet-content.active#tab2
+        .swiper.swiper-product 
+          .swiper-wrapper
+            -for(let i = 0; i < 9; i++ )
+              .swiper-slide
+                .flex.flex-col.col-span-1.shadow-xl
+                  div(class='img-ratio ratio:pt-[430_430]') 
+                    +PugImg()
+                  .title-product 
+                    .name-product 
+                      h4 Magna veniam cillum  
+                    +BtnOutline('Xem them')
+      .tabslet-content.active#tab3
+        .swiper.swiper-product 
+          .swiper-wrapper
+            -for(let i = 0; i < 9; i++ )
+              .swiper-slide
+                .flex.flex-col.col-span-1.shadow-xl
+                  div(class='img-ratio ratio:pt-[430_430]') 
+                    +PugImg()
+                  .title-product 
+                    .name-product 
+                      h4 Magna veniam cillum  
+                    +BtnOutline('Xem them')
+      .tabslet-content.active#tab4
+        .swiper.swiper-product 
+          .swiper-wrapper
+            -for(let i = 0; i < 9; i++ )
+              .swiper-slide
+                .flex.flex-col.col-span-1.shadow-xl
+                  div(class='img-ratio ratio:pt-[430_430]') 
+                    +PugImg()
+                  .title-product 
+                    .name-product 
+                      h4 Magna veniam cillum  
+                    +BtnOutline('Xem them')
+      

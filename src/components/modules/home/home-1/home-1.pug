@@ -2,10 +2,10 @@ section.section-home-banner.swiper
   .swiper-wrapper
     -for(let i = 0; i < 3; i++)
       .swiper-slide
-        div(class='img-ratio md:ratio:pt-[650_1920] ratio:pt-[1150_1920] ')
+        div(class='-lg:rem:h-[700px] img-ratio md:ratio:pt-[650_1920] ratio:pt-[1150_1920] ')
           +PugImg()
   .swiper-pagination
-  div(class='absolute xl:bottom-19 bottom-5 xl:left-20 left-5 z-1 flex flex-col-reverse gap-20 ')
+  div(class='absolute xl:bottom-19 bottom-5 xl:left-20 left-5 z-1 flex flex-col-reverse gap-base ')
     div(class='flex xl:gap-base gap-5')
       .btn-pagination.btn-prev
         <i class="fa-solid fa-arrow-left"></i>

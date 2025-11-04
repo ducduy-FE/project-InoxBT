@@ -11,70 +11,13 @@ import {
  * @param swiperInit
  */
 export function swiperInit() {
-  $(".swiper-column-auto").each(function (index) {
-    const $this = $(this);
-    // Configuration flagsvideoSetting
-    const config = {
-      loop: $this.hasClass("swiper-loop"),
-      touchMove: $this.hasClass("allow-touchMove") || true,
-      mouseWheel: $this.hasClass("allow-mouseWheel")
-        ? { forceToAxis: true }
-        : false,
-      autoHeight: $this.hasClass("auto-height"),
-      hasVideo: $this.hasClass("auto-detect-video"),
-      progressbar: $this.hasClass("progressbar"),
-      time: $this.attr("data-time") || 3500,
-      autoplay: $this.hasClass("autoplay"),
-    };
-
-    // Add unique identifier class
-    $this.addClass(`swiper-column-auto-id-${index}`);
-
-    // Create swiper with optimized options
-    new Swiper(`.swiper-column-auto-id-${index} .swiper`, {
-      modules: [Navigation, Pagination, Mousewheel],
-      speed: 500,
-      observer: true,
-      observeParents: true,
-      spaceBetween: 0,
-      loop: config.loop,
-      ...(config.autoplay && {
-        autoplay: {
-          delay: config.time,
-        },
-      }),
-      slidesPerView: "auto",
-      pagination: {
-        el: `.swiper-column-auto-id-${index} .swiper-pagination`,
-        clickable: true,
-        ...(config.progressbar && {
-          type: "progressbar",
-        }),
-      },
-      mousewheel: config.mouseWheel,
-      allowTouchMove: config.touchMove,
-      navigation: {
-        prevEl: `.swiper-column-auto-id-${index} .btn-prev`,
-        nextEl: `.swiper-column-auto-id-${index} .btn-next`,
-      },
-      watchSlidesProgress: true,
-      autoHeight: config.autoHeight,
-      on: {
-        init: function () {},
-        slideChange: function () {},
-      },
-    });
-  });
   new Swiper(".section-home-banner", {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    speed: 1000,
-    loop: true,
     effect: "fade",
+    loop: true,
     modules: [Pagination, Navigation, Autoplay, EffectFade], // ⚡ modules khai báo ở đây
-    // autoplay: {
-    //   delay: 3500,
-    // },
+    autoplay: {
+      delay: 3500,
+    },
     pagination: {
       el: ".section-home-banner .swiper-pagination",
       clickable: true,
@@ -119,5 +62,35 @@ export function swiperInit() {
         },
       },
     },
+  });
+  new Swiper(".swiper-service", {
+    loop: true,
+    // autoplay: {
+    //   delay: 3500,
+    // },
+    pagination: {
+      el: ".swiper-pagination",
+      type: "fraction",
+    },
+    modules: [Pagination, Navigation, Autoplay], // ⚡ modules khai báo ở đây
+  });
+  new Swiper(".swiper-product", {
+    spaceBetween: 24,
+    breakpoints: {
+      0: {
+        slidesPerView: 2.5,
+      },
+      1024: {
+        slidesPerView: 3.5,
+      },
+      1200: {
+        slidesPerView: 5,
+      },
+    },
+    navigation: {
+      nextEl: ".btn-navigation-next",
+      prevEl: ".btn-navigation-prev",
+    },
+    modules: [Navigation],
   });
 }

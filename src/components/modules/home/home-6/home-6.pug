@@ -1,0 +1,35 @@
+section.section-py.flex.flex-col.gap-20
+  .container-px-60.flex.flex-col.gap-base
+    .flex.justify-between
+      h1.text-h1.text-primary-1 Tin tức
+      +BtnOutline('Xem them')
+    .grid.grid-cols-2.gap-base
+      -for(let i = 0; i < 2; i++)
+        div(class=' relative group hover:bg-primary-1 lg:col-span-1 col-span-full flex bg-gray-700')
+          div(class='') 
+            div(class='overflow-hidden aspect-square rem:w-[350px] img-ratio ratio:pt-[350_350]')
+              +PugImg()(class='object-cover hover:scale-115')
+          div(class=' text-white flex flex-col gap-2 px-base py-base')
+            h4.text-h4 Ex incididunt dolor ea Lorem ad ipsum.
+            p.text-base Sunt incididunt elit nostrud ea Lorem consequat exercitation esse exercitation tempor. Amet officia et sint dolor aute mollit dolor pariatur nostrud dolor exercitation. Ullamco aliqua esse et ullamco tempor. Sunt deserunt laboris ipsum occaecat ipsum pariatur laboris consequat et tempor ad enim occaecat.
+          div(class='absolute bottom-0 right-0 bg-primary-1 text-white group-hover:bg-primary flex flex-col px-3 py-1 items-center divide-y-3 capitalize')
+            span(class=' text-h4 px-2') 20
+            span th12
+    .grid.grid-cols-3.gap-6
+      -for(let i = 0; i < 3; i++)
+        div(class='col-span-1 flex items-start group')
+          div(class='bg-primary-1 text-white group-hover:bg-primary flex flex-col px-3 py-1 items-center divide-y-3 capitalize')
+            span(class=' text-h4 px-2') 20
+            span th12
+          div(class='flex flex-col gap-2 border-r px-5')
+            h3.text-h3 Magna proident consectetur aliqua dolor ex eiusmod ad laborum.
+            p.text-h5.text-gray-700.line-clamp-3 Reprehenderit proident tempor quis non culpa elit et nostrud mollit elit esse deserunt. Enim excepteur nisi amet commodo mollit nisi deserunt cupidatat proident. Non dolore qui eiusmod dolore do duis consequat ullamco nulla. Nostrud sunt consectetur irure in ex tempor exercitation do proident aliqua ad velit.
+  .section-recent
+    .slider-text
+      .list
+        -for(let i = 0; i < 3; i++)
+          each image in ['logo-1.png','logo-2.png','logo-3.png','logo-4.png','logo-5.png','logo-6.png','logo-7.png']
+            .item
+              div(class='rem:w-[160px]')
+                div(class='img-ratio ratio:pt-[100_160]')
+                  img(src=`./img/${image}`, alt="" class='lozad object-cover')
