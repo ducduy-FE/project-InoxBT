@@ -11,7 +11,7 @@
 		"keepalive": 10000
 	},
 	"deployment": {
-		"basePath": "/public_html/",
+		"basePath": "/public_html/InoxBT",
 		"localFolder": "dist",
 		"mappings": {
 			"styles": {
