@@ -98,23 +98,23 @@ module.exports = {
     },
     fontSize: {
       h1: [
-        "clamp(40px,calc(40/1920*100rem),calc(40/1920*100rem))",
+        "clamp(48px,calc(40/1920*100rem),calc(40/1920*100rem))",
         { lineHeight: "1.25" },
       ],
       h2: [
-        "clamp(32px,calc(32/1920*100rem),calc(32/1920*100rem))",
+        "clamp(32px,calc(32/1920*100rem),calc(20/1920*100rem))",
         { lineHeight: "1.3" },
       ],
       h3: [
-        "clamp(24	px,calc(24/1920*100rem),calc(24/1920*100rem))",
-        { lineHeight: "1.35" },
+        "clamp(24px,calc(24/1920*100rem),calc(18/1920*100rem))",
+        { lineHeight: "1.3" },
       ],
       h4: [
         "clamp(20px,calc(20/1920*100rem),calc(20/1920*100rem))",
         { lineHeight: "1.4" },
       ],
       h5: [
-        "clamp(18px,calc(18/1918*100rem),calc(18/1920*100rem))",
+        "clamp(16px,calc(18/1918*100rem),calc(18/1920*100rem))",
         { lineHeight: "1.4" },
       ],
       0: ["0", { lineHeight: "0" }],
@@ -280,10 +280,9 @@ module.exports = {
           2: "#216A2F",
           3: "#3A8F42",
           4: "#58BA59",
-          5: "linear-gradient(45deg, #00A887 0%, #07BD9A 45%, #00624E 100%)",
-          6: "#CC1323",
-          7: "#0C4EA2",
-          8: "#002277",
+          5: "#CC1323",
+          6: "#0C4EA2",
+          7: "#002277",
         },
         neutral: {
           50: "#f6f6f6",
@@ -348,6 +347,7 @@ module.exports = {
         DEFAULT: "12.5px",
       },
       borderRadius: {
+        0:"0 /* 0px */",
         1: "calc(4/1920*100rem) /* 4px */",
         2: "calc(8/1920*100rem) /* 8px */",
         3: "calc(12/1920*100rem) /* 12px */",
@@ -561,8 +561,8 @@ module.exports = {
           },
         },
         ".container-px-60": {
-          paddingLeft: "calc(40/1920*100rem)",
-          paddingRight: "calc(40/1920*100rem)",
+          paddingLeft: "calc(16/1920*100rem)",
+          paddingRight: "calc(16/1920*100rem)",
           [`@media (min-width: ${theme("screens.lg")})`]: {
             paddingLeft: "calc(60/1920*100rem)",
             paddingRight: "calc(60/1920*100rem)",
@@ -571,6 +571,9 @@ module.exports = {
             paddingLeft: "calc(60/1920*100rem)",
             paddingRight: "calc(60/1920*100rem)",
           },
+        },
+        ".bg-primary":{
+          background : "linear-gradient(45deg,#814F2F 9%,#A58A55 27%,#E2CDB0 50%,#BDA77E 69%,#814F2F 100%)",
         },
         ".title-64": {
           "@apply": "text-4xl md:text-5xl lg:text-6xl xl:text-64 font-bold",

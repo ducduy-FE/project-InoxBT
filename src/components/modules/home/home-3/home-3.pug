@@ -1,0 +1,32 @@
+section
+  div(class='bg-primary-1 md:hidden flex px-4 items-center text-white ') 
+    h1.text-h1.font-bold Dich vu
+  .flex
+    div(class='bg-primary-1 lg:rem:w-[calc(480/1920*100rem)] md:flex hidden xl:px-15 px-4  items-center text-white ') 
+      h1.text-h1.font-bold Dich vu
+    .swiper.swiper-service.group(class='-sm:w-1/2')
+      .swiper-wrapper
+        -for(let i = 0; i < 6; i++)
+          .swiper-slide
+            div(class='img-ratio ratio:pt-[850_720] rem:h-[720px]')
+              img(src="./img/1.jpg" alt="" class='lozad object-cover')
+      .swiper-pagination
+      .bg-title-service
+        .title-service
+          h1(class='absolute -top-5 left-1/2 -translate-x-1/2 bg-primary-1 rounded-2 p-2 text-center') something
+          .flex.flex-col.gap-5.pt-5.w-full
+            -for(let i = 0; i < 4; i++ )
+              p something
+    .swiper.swiper-service.group(class='-sm:w-1/2')
+      .swiper-wrapper
+        -for(let i = 0; i < 6; i++)
+          .swiper-slide
+            div(class='img-ratio ratio:pt-[850_720] rem:h-[720px]')
+              img(src="./img/1.jpg" alt="" class='lozad object-cover')
+      .swiper-pagination
+      .bg-title-service
+        .title-service
+          h1(class='absolute -top-5 left-1/2 -translate-x-1/2 bg-primary-1 rounded-2 p-2 text-center') something
+          .flex.flex-col.gap-5.pt-5.w-full
+            -for(let i = 0; i < 4; i++ )
+              p something

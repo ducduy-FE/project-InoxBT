@@ -81,3 +81,12 @@
 		.header-language-list
 			li.wpml-ls-current-language
 				@apply hidden
+
+@mixin BtnOutline
+	@apply px-6 py-3 border border-primary-1 rounded-2 text-primary-1
+	@apply flex justify-center items-center hover:bg-primary hover:text-white hover:border-white
+
+@mixin BtnPrimary
+	.btn-primary
+		@apply px-6 py-3 rounded-2 bg-primary-1 text-white border border-white
+		@apply hover:bg-primary
