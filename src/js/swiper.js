@@ -93,4 +93,15 @@ export function swiperInit() {
     },
     modules: [Navigation],
   });
+  new Swiper(".swiper-section-6", {
+    spaceBetween: 24,
+    breakpoints: {
+      0: {
+        slidesPerView: 1.5,
+      },
+      1200: {
+        slidesPerView: 3,
+      }
+    },
+  });
 }
