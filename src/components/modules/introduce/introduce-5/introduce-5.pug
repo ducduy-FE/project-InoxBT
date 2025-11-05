@@ -6,18 +6,18 @@ section
 			h1.text-h1.text-primary-1 Liên hệ & Tư vấn
 			p.text-h5.text-gray-950 Fugiat commodo ullamco voluptate consequat culpa qui dolor eiusmod pariatur. Incididunt nostrud eiusmod eiusmod adipisicing veniam mollit aute cillum anim nisi ea in labore.
 			form(action="" class='grid grid-cols-2 gap-4 ')
-				input(type="text" placeholder='Họ và tên' class='border border-gray-500 py-3 px-7 rounded-full' required )
-				input(type="text" placeholder='Số điện thoại' class='border border-gray-500 py-3 px-7 rounded-full' required )
-				input(type="email" placeholder='Email' class='border border-gray-500 py-3 px-7 rounded-full' required )
-				input(type="text" placeholder='Tiêu đề' class='border border-gray-500 py-3 px-7 rounded-full')
-				textarea(name="" class='col-span-full' placeholder='Nội dung' class='border border-gray-500 py-3 px-7 rounded-2' required )
-				div(class=' flex lg:flex-row flex-col lg:justify-between justify-start col-span-full lg:items-center items-start')
-					div( class="recaptcha-box")
+				input(type="text" placeholder='Họ và tên' class=' focus:outline-none border border-gray-500 py-3 px-7 rounded-full' required )
+				input(type="text" placeholder='Số điện thoại' class=' focus:outline-none  border border-gray-500 py-3 px-7 rounded-full' required )
+				input(type="email" placeholder='Email' class='border focus:outline-none  border-gray-500 py-3 px-7 rounded-full' required )
+				input(type="text" placeholder='Tiêu đề' class='border focus:outline-none  border-gray-500 py-3 px-7 rounded-full')
+				textarea(name="" class='col-span-full' placeholder='Nội dung' class='border focus:outline-none  border-gray-500 py-3 px-7 rounded-2' required )
+				div(class=' flex lg:flex-row flex-col lg:justify-between justify-start col-span-full lg:items-center items-start ')
+					div( class="recaptcha-box rem:max-h-[70px]")
 						label(class="checkbox")
 							input( type="checkbox" required)
 							span Tôi không phải là người máy
 						div( class="recaptcha-logo")
-							div(class='aspect-square rem:w-[20px]')
-								img( src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class='lozad object-cover')
+							div(class=' rem:w-[20px]  ')
+								img( src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class='lozad object-cover rem:w-[28px] h-auto')
 							<span>reCAPTCHA</span>
-					button(type="submit" class='px-4 py-3 bg-primary-3 rounded-1 text-white text-center text-lg -lg:flex-1' ) Gửi
+					button(type="submit" class='px-4 py-3 bg-primary-1 rounded-1 text-white text-center text-lg -lg:flex-1 rem:max-h-[49px] hover:bg-linear-primary' ) Gửi

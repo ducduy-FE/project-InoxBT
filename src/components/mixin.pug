@@ -60,7 +60,7 @@ mixin HeaderLanguage()
 						a(href="") 
 							span EN
 mixin Breadcrumb-custom(items)
-	.flex.items-center
+	.flex.items-center(class="" +attributes.class)
 		each item, i in items
 			- const isLast = i === items.length - 1
 			p(

@@ -1,0 +1,9 @@
+@use "sass:math"
+.section-list-2
+	@apply px-15 py-20
+.list-img
+	@include img-ratio(math.div(603, 1033))
+.section-list-2
+	div
+		&:last-child
+			@apply border-none
