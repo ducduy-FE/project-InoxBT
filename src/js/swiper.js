@@ -1,3 +1,4 @@
+import lozad from "lozad";
 import Swiper from "swiper";
 import {
   Autoplay,
@@ -101,7 +102,49 @@ export function swiperInit() {
       },
       1200: {
         slidesPerView: 3,
-      }
+      },
     },
   });
+  new Swiper(".swiper-detail", {
+    modules: [Navigation, Autoplay],
+    loop: true,
+    centeredSlides: true, // đặt slide active ở giữa
+    slidesPerView: 1.5, // 👈 cho “peek” 1.5 slide
+    spaceBetween: 20, // khoảng giữa các slide
+    navigation: {
+      nextEl: ".swiper-detail .btn-next",
+      prevEl: ".swiper-detail .btn-prev",
+    },
+    autoplay: {
+      delay: 400000000,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      0: { slidesPerView: 1, spaceBetween: 12 }, // nhỏ: chỉ thấy 1 gần đầy
+      768: { slidesPerView: 1.2, spaceBetween: 16 },
+      1024: { slidesPerView: 1.5, spaceBetween: 20 }, // desktop: thấy 1.5
+      1400: { slidesPerView: 1.5, spaceBetween: 20 }, // nếu muốn thấy hơn 1/2
+    },
+    // event: thêm class cho slide active => phóng to/opacity
+    on: {
+      init(swiper) {
+        updateActiveClass(swiper);
+      },
+      slideChangeTransitionEnd(swiper) {
+        updateActiveClass(swiper);
+      },
+    },
+  });
+
+  function updateActiveClass(swiper) {
+    swiper.slides.forEach((s) => {
+      s.classList.remove("scale-100", "opacity-100");
+      s.classList.add("scale-90", "opacity-80");
+    });
+    const active = swiper.slides[swiper.activeIndex];
+    if (active) {
+      active.classList.remove("scale-90", "opacity-80");
+      active.classList.add("scale-100", "opacity-100");
+    }
+  }
 }

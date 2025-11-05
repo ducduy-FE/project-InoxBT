@@ -1,0 +1,35 @@
+.section-4
+	@apply max-h-[894px]
+	.test-block
+		.dot
+			&:nth-child(1)
+				@apply top-[29%] -left-[2%]
+			&:nth-child(2)
+				@apply top-[59%] -right-[3%]
+			&:nth-child(3)
+				@apply top-[29%] -right-[3%]
+			&:nth-child(4)
+				@apply top-[59%] -left-[2%]
+.dot
+	@apply em:w-[34px] em:h-[34px] rounded-full bg-gray-400 flex justify-center items-center absolute
+	&::after
+		content: ""
+		@apply bg-gray-400 em:w-[26px] em:h-[26px] em:border-[3px] rounded-full border-white
+// .section-4
+// 	.content-text
+// 		@apply -2xl:hidden
+// .test-block
+// 	@apply -2xl:hidden
+// .vecto-section-4
+// 	@apply -2xl:hidden
+// .content-center
+// 	.btn-section-4
+// 		@apply -2xl:hidden
+.content-center
+	font-size: 1vw
+	@screen -xl
+		font-size: 0.85vw
+	@screen -md
+		font-size: 2vw
+.content-text
+	@apply gap-2 xl:gap-4

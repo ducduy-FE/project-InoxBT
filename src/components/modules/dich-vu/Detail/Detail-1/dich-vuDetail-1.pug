@@ -1,0 +1,20 @@
+section
+	.section-1-detail(class="px-15 -md:px-4 ")
+		+Breadcrumb-custom(["Trang chủ","Dịch vụ","Gia công kim loại tấm"])(class="py-3")
+		.detail-top(class="py-20 -md:py-10")
+			.top-title(class="flex justify-between -lg:flex-col -md:gap-3")
+				h1(class="title-48 font-bold text-gray-950 w-[calc(647/1800*100%)] -lg:w-full") Gia công kim loại tấm
+				.top-content(class="body-18 text-gray-700 font-normal flex gap-6 flex-col w-[calc(1033/1800*100%)] -lg:w-full")
+					p Chúng tôi cung cấp dịch vụ gia công kim loại tấm chuyên nghiệp với hệ thống máy móc hiện đại và quy trình sản xuất được kiểm soát nghiêm ngặt. Các công đoạn cắt laser, bào rãnh chữ V, chấn CNC và cắt chặt theo yêu cầu được thực hiện với độ chính xác cao, đáp ứng tiêu chuẩn kỹ thuật khắt khe của từng sản phẩm. Mục tiêu của chúng tôi là mang đến những chi tiết kim loại có độ hoàn thiện tối ưu, đảm bảo tính thẩm mỹ và độ bền vượt trội trong mọi ứng dụng công nghiệp.
+					p Với đội ngũ kỹ thuật viên chuyên môn cao, hệ thống quản lý sản xuất khoa học và khả năng đáp ứng đa dạng vật liệu – kết cấu, chúng tôi cung cấp các giải pháp gia công linh hoạt và hiệu quả. Mỗi đơn hàng đều được tư vấn kỹ thuật đầy đủ, lựa chọn công nghệ phù hợp để tối ưu chi phí và chất lượng. Chúng tôi không ngừng đầu tư công nghệ mới và cải tiến quy trình, nhằm mang đến cho khách hàng dịch vụ gia công kim loại tấm uy tín, ổn định và bền vững theo thời gian.
+			.swiper-detail.swiper.reative.overflow-hidden.py-10 
+				.swiper-wrapper
+					each img, i in ["/img/1.jpg", "/img/1.jpg", "/img/1.jpg" , "/img/1.jpg", "/img/1.jpg"]
+						.swiper-slide.flex.justify-center.transition-all.duration-500
+							div(class="w-full")
+								.slide-item(class="relative overflow-hidden img-ratio ratio:pt-[667_1186] h-full ")
+									img(src=img alt=`Hình ${i+1}` class=" object-cover ")
+				.btn-detail.btn-prev
+					<i class="fa-solid fa-arrow-left"></i>
+				.btn-detail.btn-next
+					<i class="fa-solid fa-arrow-right"></i>
