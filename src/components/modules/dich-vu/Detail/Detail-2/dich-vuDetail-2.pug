@@ -1,12 +1,18 @@
 section
 	.section-detail-2 
-		div(class="grid grid-cols-4")
-			.card-instruct
-				.card-img(class="max-w-[420px]") 
-					.img-ratio(Class="ratio:pt-[280_420]")
-						+PugImg()
-			.card-content 
-				.content-num 
-					p 1
-				.content-title 
-					p
+		.title
+			h1(class="title-48 font-bold  pb-12") Dịch vụ lắp đặt
+		.swiper.swiper-install
+			.swiper-wrapper
+				-for(let i = 0 ; i<4; i++)
+					.swiper-slide
+						.card-instruct(class="flex flex-col gap-6")
+							.card-img(class="max-w-[420px]") 
+								.img-ratio(class="ratio:pt-[280_420]")
+									+PugImg()
+							.card-content(class="flex gap-3") 
+								.content-num(class="flex justify-start items-start")
+									p(class ="rem:text-[60px] font-black")=i + 1
+								.content-instruct(class="flex flex-col gap-3")
+									p(class="title-20 font-bold text-gray-950") Gửi yêu cầu bản &amp; vẽ kỹ thuật 
+									p(class="text-gray-700 body-18 font-normal") Khách hàng cung cấp file thiết kế hoặc thông số sản phẩm cần gia công. 

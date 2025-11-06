@@ -7,3 +7,9 @@
 				animation-duration: 0.5s
 				@apply w-5 h-5 border-3 border-primary-1/40 border-t-primary-1 rounded-full inline-block
 				@apply absolute animate-spin left-full ml-3
+	.filter-btn
+		@apply px-4 py-2 mx-2 rounded-md text-sm font-medium transition-colors
+		&:hover
+			@apply text-primary-1
+		&.active
+			@apply bg-primary-1 text-white

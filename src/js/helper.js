@@ -1,4 +1,5 @@
-export function setBackgroundElement () {
+import { CountUp } from "countup.js";
+export function setBackgroundElement() {
 	$("[setBackground]").each(function () {
 		var background = $(this).attr("setBackground");
 		$(this).css({
@@ -8,7 +9,7 @@ export function setBackgroundElement () {
 		});
 	});
 }
-export function detectCloseElement (ele, ele2, funcRemove) {
+export function detectCloseElement(ele, ele2, funcRemove) {
 	// close
 	$(document).on("click", function (e) {
 		console.log();
@@ -24,7 +25,7 @@ export function detectCloseElement (ele, ele2, funcRemove) {
 	});
 	// overlay-blur
 }
-export function buttonToTop () {
+export function buttonToTop() {
 	let windowHeight = $(window).height();
 	$(document).on("scroll", function () {
 		let scrollTop = $(window).scrollTop();
@@ -40,7 +41,7 @@ export function buttonToTop () {
 	});
 }
 
-export function ToggleItem () {
+export function ToggleItem() {
 	const nodeParent = $(".wrap-item-toggle");
 	const nodeItem = nodeParent.find(".item-toggle");
 	const nodeTitle = nodeItem.find(".title");
@@ -53,7 +54,7 @@ export function ToggleItem () {
  * parent, children, item, button, initItem
  * @param { parent, children, item, button, initItem} listNode
  */
-export function funcExpandContent (listNode) {
+export function funcExpandContent(listNode) {
 	const { parent, children, item, button, initItem, gap = 0 } = listNode;
 	if (!$(parent).length) return;
 	let itemHeight = $(item).outerHeight();
@@ -80,7 +81,7 @@ export function funcExpandContent (listNode) {
 	});
 }
 
-export function clickScrollToDiv (nodeEle, heightSpacing = () => { }) {
+export function clickScrollToDiv(nodeEle, heightSpacing = () => { }) {
 	$(nodeEle).on("click", function (event) {
 		let height = 0;
 		$(this).addClass("active").siblings().removeClass("active");
@@ -102,7 +103,7 @@ export function clickScrollToDiv (nodeEle, heightSpacing = () => { }) {
 	});
 }
 
-export function appendCaptchaASP () {
+export function appendCaptchaASP() {
 	if (!$("#ctl00_mainContent_ctl01_pnlFormWizard").length) return;
 	// Select the div element you want to observe
 	const myDiv = document.querySelector("#ctl00_mainContent_ctl01_pnlFormWizard");
@@ -117,13 +118,13 @@ export function appendCaptchaASP () {
 	const config = { attributes: true, characterData: true, childList: true };
 	// Start observing the target div element
 	observer.observe(myDiv, config);
-	function appendCaptcha () {
+	function appendCaptcha() {
 		$(".form-group.frm-captcha").appendTo(".wrap-form-submit");
 		$(".form-group.frm-btnwrap").appendTo(".wrap-form-submit");
 	}
 	appendCaptcha();
 }
-export function replaceSvgImages () {
+export function replaceSvgImages() {
 	$(".img-svg").each(function () {
 		const $img = $(this);
 		const imgURL = $img.attr("src");
@@ -153,7 +154,7 @@ export function replaceSvgImages () {
 		});
 	});
 }
-export function indicatorSlide () {
+export function indicatorSlide() {
 	if ($(".indicator-swipe").length > 0) {
 		var callback = function (entries) {
 			entries.forEach(function (entry) {
@@ -174,7 +175,7 @@ export function indicatorSlide () {
 	}
 }
 
-export function countUpInit () {
+export function countUpInit() {
 	const countUpElements = document.querySelectorAll(".countup");
 	let countUp;
 	countUpElements.forEach((element) => {
@@ -203,7 +204,7 @@ export function countUpInit () {
 		},
 	};
 }
-export function stickElementToEdge () {
+export function stickElementToEdge() {
 	var target = $("[stick-to-edge]");
 	target.each(function () {
 		const $this = $(this);
@@ -245,7 +246,7 @@ export function stickElementToEdge () {
 		}
 	});
 }
-export function menuSpy () {
+export function menuSpy() {
 	var elm = document.querySelector("#menu-spy");
 	let debounceTimer;
 	let isActive = false;

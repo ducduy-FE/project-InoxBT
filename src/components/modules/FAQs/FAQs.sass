@@ -1,0 +1,20 @@
+.section-faqs
+	@apply rem:pt-[101px]
+.qa-drop
+	@apply border border-transparent transition-all duration-300 rounded-2
+	&.active
+		@apply border-none shadow-[0_8px_7.1px_rgba(0,0,0,0.08)] bg-gray-50
+	.liner-border-b
+		&.active
+			@apply border-b-2 border-primary-1 pb-5 text-primary-1
+			&::after
+				content: "\f068"
+				@apply text-base text-primary-1 font-awesome
+		&::after
+			content: "\2b"
+			@apply text-base text-gray-950 font-awesome
+
+	i
+		@apply text-primary-1
+	i
+		transition: all 0.3s ease

@@ -46,7 +46,7 @@ function createSpinner(text) {
 	const originalStop = spinner.stop.bind(spinner);
 	const originalStopAndPersist = spinner.stopAndPersist ? spinner.stopAndPersist.bind(spinner) : null;
 
-	spinner.succeed = function(message) {
+	spinner.succeed = function (message) {
 		if (quietMode) {
 			// In quiet mode, don't show success messages (matching original behavior)
 			this.stop();
@@ -57,21 +57,21 @@ function createSpinner(text) {
 		return res;
 	};
 
-	spinner.fail = function(message) {
+	spinner.fail = function (message) {
 		// Always show fail messages (matching original behavior)
 		const res = originalFail(message);
 		ensureRawStdin(); // Restore stdin state after spinner stops
 		return res;
 	};
 
-	spinner.stop = function(...args) {
+	spinner.stop = function (...args) {
 		const res = originalStop(...args);
 		ensureRawStdin(); // Restore stdin state after spinner stops
 		return res;
 	};
 
 	if (originalStopAndPersist) {
-		spinner.stopAndPersist = function(...args) {
+		spinner.stopAndPersist = function (...args) {
 			const res = originalStopAndPersist(...args);
 			ensureRawStdin(); // Restore stdin state after spinner stops
 			return res;
@@ -115,7 +115,7 @@ const buildStats = {
 	}
 };
 
-function trackTask (name, fn) {
+function trackTask(name, fn) {
 	return async (...args) => {
 		const start = Date.now();
 		try {
@@ -130,7 +130,7 @@ function trackTask (name, fn) {
 }
 
 // Beautiful logging system with quiet mode support
-function logBeautiful (type, title, message = '', details = null) {
+function logBeautiful(type, title, message = '', details = null) {
 	const quietMode = process.argv.includes('--quiet');
 	const isVerbose = process.argv.includes('--verbose');
 
@@ -184,7 +184,7 @@ function logBeautiful (type, title, message = '', details = null) {
 
 
 // Show optimized build stats with enhanced boxen layout
-function showBuildStats () {
+function showBuildStats() {
 	if (Object.keys(buildStats.tasks).length === 0) return;
 
 	const totalTime = buildStats.end - buildStats.start;
@@ -243,7 +243,7 @@ let lastSuccessfulBuild = {
 	css: false
 };
 
-function markBuildSuccess (type) {
+function markBuildSuccess(type) {
 	lastSuccessfulBuild[type] = true;
 	// Only show build success marking in verbose mode
 	const isVerbose = process.argv.includes('--verbose');
@@ -263,7 +263,7 @@ let activeOperations = new Set();
 let isShuttingDown = false;
 
 // Utility functions
-function outputText (title = "Build Info", desc = "Build completed") {
+function outputText(title = "Build Info", desc = "Build completed") {
 	const boxedMessage = boxen(`\n${desc}\n`, {
 		padding: { top: 1, left: 4, right: 4, bottom: 1 },
 		title: title,
@@ -275,7 +275,7 @@ function outputText (title = "Build Info", desc = "Build completed") {
 	console.log(boxedMessage);
 }
 
-function buildFinish (buildTime, showUrls = false) {
+function buildFinish(buildTime, showUrls = false) {
 	const quietMode = process.argv.includes('--quiet');
 
 	if (quietMode && !showUrls) {
@@ -379,7 +379,7 @@ function buildFinish (buildTime, showUrls = false) {
 }
 
 // FTP Deployment Functions
-async function createFtpConnection () {
+async function createFtpConnection() {
 	if (!ftpConfig) {
 		console.log(logSymbols.error, "FTP config not loaded. Cannot create connection.");
 		return null;
@@ -403,7 +403,7 @@ async function createFtpConnection () {
 	}
 }
 
-function checkDistFolder () {
+function checkDistFolder() {
 	const folderName = ftpConfig?.deployment?.localFolder || "dist";
 	if (!fs.existsSync(folderName)) {
 		console.log(
@@ -416,7 +416,7 @@ function checkDistFolder () {
 }
 
 // Compilation verification helper
-function verifyCompiledFiles (mappingKey) {
+function verifyCompiledFiles(mappingKey) {
 	const expectedFiles = {
 		styles: ['dist/css/main.min.css', 'dist/css/core.min.css'],
 		scripts: ['dist/js/main.min.js', 'dist/js/core.min.js'],
@@ -434,7 +434,7 @@ function verifyCompiledFiles (mappingKey) {
 	return true;
 }
 
-async function deployFiles (mappingKey) {
+async function deployFiles(mappingKey) {
 	// Track this operation for graceful shutdown
 	const operationId = Symbol('deploy');
 	activeOperations.add(operationId);
@@ -515,7 +515,7 @@ async function deployFiles (mappingKey) {
 }
 
 // Utility function to format file size
-function formatFileSize (bytes) {
+function formatFileSize(bytes) {
 	if (bytes === 0) return '0 B';
 	const k = 1024;
 	const sizes = ['B', 'KB', 'MB', 'GB'];
@@ -524,7 +524,7 @@ function formatFileSize (bytes) {
 }
 
 // Helper function to upload directory recursively
-async function uploadDirectory (client, localDir, remoteDir, excludePatterns = [], baseDir = null, spinner = null) {
+async function uploadDirectory(client, localDir, remoteDir, excludePatterns = [], baseDir = null, spinner = null) {
 	// Set baseDir for relative path calculation on first call
 	if (!baseDir) baseDir = localDir;
 
@@ -580,28 +580,28 @@ async function uploadDirectory (client, localDir, remoteDir, excludePatterns = [
 	}
 }
 
-async function deployStyles () {
+async function deployStyles() {
 	return await deployFiles("styles");
 }
 
-async function deployScripts () {
+async function deployScripts() {
 	return await deployFiles("scripts");
 }
 
-async function deployImages () {
+async function deployImages() {
 	return await deployFiles("images");
 }
 
-async function deployFonts () {
+async function deployFonts() {
 	return await deployFiles("fonts");
 }
 
-async function deployAll () {
+async function deployAll() {
 	return await deployFiles("all");
 }
 
 // Auto-deploy toggle function
-function toggleAutoDeploy () {
+function toggleAutoDeploy() {
 	autoDeployMode = !autoDeployMode;
 	const statusIcon = autoDeployMode ? colors.green('✓') : colors.red('✗');
 	const statusText = autoDeployMode ? colors.green('ON') : colors.red('OFF');
@@ -613,7 +613,7 @@ function toggleAutoDeploy () {
 }
 
 // Clean and setup directories - matches cleanDist from gulp
-function cleanDist () {
+function cleanDist() {
 	if (fs.existsSync('dist')) {
 		fs.rmSync('dist', { recursive: true, force: true });
 	}
@@ -624,7 +624,7 @@ function cleanDist () {
 	});
 }
 
-function cleanImage () {
+function cleanImage() {
 	if (fs.existsSync('dist/img')) {
 		fs.rmSync('dist/img', { recursive: true, force: true });
 	}
@@ -632,14 +632,14 @@ function cleanImage () {
 }
 
 // Copy assets - matches copy.js tasks
-function copyImage () {
+function copyImage() {
 	const imageExtensions = ['svg', 'png', 'jpg', 'jpeg', 'gif', 'webp', 'mp4'];
 	const srcDir = 'src/assets/img';
 	const destDir = 'dist/img';
 
 	if (!fs.existsSync(srcDir)) return;
 
-	function copyRecursive (src, dest) {
+	function copyRecursive(src, dest) {
 		if (!fs.existsSync(dest)) {
 			fs.mkdirSync(dest, { recursive: true });
 		}
@@ -664,7 +664,7 @@ function copyImage () {
 	copyRecursive(srcDir, destDir);
 }
 
-function copyFonts () {
+function copyFonts() {
 	config.font.forEach(fontGlob => {
 		const fontDir = fontGlob.replace('/**', '');
 		if (fs.existsSync(fontDir)) {
@@ -673,7 +673,7 @@ function copyFonts () {
 				fs.mkdirSync(destDir, { recursive: true });
 			}
 
-			function copyFontFiles (src, dest) {
+			function copyFontFiles(src, dest) {
 				const items = fs.readdirSync(src, { withFileTypes: true });
 
 				items.forEach(item => {
@@ -696,7 +696,7 @@ function copyFonts () {
 	});
 }
 
-function copyFavicon () {
+function copyFavicon() {
 	if (fs.existsSync('src/assets/favicon.ico')) {
 		fs.copyFileSync('src/assets/favicon.ico', 'dist/favicon.ico');
 	}
@@ -705,7 +705,7 @@ function copyFavicon () {
 // Note: generateVirtualCoreJSContent function removed - now using direct concatenation in buildCoreJS
 
 // Core JS task - simple concatenation and minification without module systems
-const buildCoreJS = trackTask('Core JS', async function buildCoreJS () {
+const buildCoreJS = trackTask('Core JS', async function buildCoreJS() {
 	try {
 		// Read and concatenate all JS files in memory
 		let concatenatedContent = '';
@@ -725,7 +725,7 @@ const buildCoreJS = trackTask('Core JS', async function buildCoreJS () {
 		// Use esbuild transform API for pure minification without module wrapping
 		const result = await esbuild.transform(concatenatedContent, {
 			minify: shouldMinify,
-			target: ['es5'], // ES5 for maximum compatibility
+			target: ['es2017'], // ES5 for maximum compatibility
 			loader: 'js',
 			sourcemap: isDev
 		});
@@ -752,7 +752,7 @@ const buildCoreJS = trackTask('Core JS', async function buildCoreJS () {
 });
 
 // Core CSS task - optimized with performance tracking
-const buildCoreCSS = trackTask('Core CSS', async function buildCoreCSS () {
+const buildCoreCSS = trackTask('Core CSS', async function buildCoreCSS() {
 	try {
 		// Fix path resolution by adding "./" prefix for relative paths
 		const cssEntry = config.css.map(file => {
@@ -816,7 +816,7 @@ const buildCoreCSS = trackTask('Core CSS', async function buildCoreCSS () {
 });
 
 // Main JS task - optimized with better error handling and performance tracking
-const buildMainJS = trackTask('Main JS', async function buildMainJS () {
+const buildMainJS = trackTask('Main JS', async function buildMainJS() {
 	try {
 		await esbuild.build({
 			entryPoints: ['src/js/main.js'],
@@ -851,7 +851,7 @@ const buildMainJS = trackTask('Main JS', async function buildMainJS () {
 });
 
 // SASS task - optimized with TailwindCSS JIT and better performance
-const buildSASS = trackTask('SASS', async function buildSASS () {
+const buildSASS = trackTask('SASS', async function buildSASS() {
 	try {
 		// Create SASS entry file that matches gulp sass task file pattern
 		const sassFiles = [
@@ -871,7 +871,7 @@ const buildSASS = trackTask('SASS', async function buildSASS () {
 
 			const files = [];
 
-			function scanDirectory (dir, recursive = false) {
+			function scanDirectory(dir, recursive = false) {
 				const items = fs.readdirSync(dir, { withFileTypes: true });
 
 				items.forEach(item => {
@@ -967,7 +967,7 @@ const buildSASS = trackTask('SASS', async function buildSASS () {
 });
 
 // Pug task - matches pug.js from gulp
-function buildPugTemplates () {
+function buildPugTemplates() {
 	try {
 		let filesToProcess = [];
 
@@ -1022,7 +1022,7 @@ function buildPugTemplates () {
 }
 
 // Main build function - optimized with beautiful logging and performance tracking
-async function build () {
+async function build() {
 	buildStats.start = Date.now();
 	buildStats.buildCount++;
 	buildStats.tasks = {}; // Reset task timings for this build
@@ -1099,7 +1099,7 @@ async function build () {
 }
 
 // Core build function (matches gulp core task)
-async function buildCore () {
+async function buildCore() {
 	console.log('🚀 Starting core build...');
 	const startTime = Date.now();
 
@@ -1130,7 +1130,7 @@ async function buildCore () {
 }
 
 // Keyboard shortcuts functionality
-function initKeyboardShortcuts () {
+function initKeyboardShortcuts() {
 	if (!ftpConfig) {
 		console.log('⚠️  FTP config not loaded. Keyboard shortcuts for deployment disabled.');
 		return;
@@ -1205,7 +1205,7 @@ function initKeyboardShortcuts () {
 	// Add a clean exit handler for SIGINT (Ctrl+C)
 	process.on("SIGINT", handleExit);
 
-	async function handleExit () {
+	async function handleExit() {
 		// Prevent multiple simultaneous exit calls
 		if (isShuttingDown) return;
 		isShuttingDown = true;
@@ -1253,7 +1253,7 @@ function initKeyboardShortcuts () {
 }
 
 // Function to run a task
-async function runTask (taskName) {
+async function runTask(taskName) {
 	try {
 		let taskPromise;
 
@@ -1294,7 +1294,7 @@ async function runTask (taskName) {
 }
 
 // Helper function to find an available port
-async function findAvailablePort (startPort = 7979) {
+async function findAvailablePort(startPort = 7979) {
 	const net = require('net');
 
 	return new Promise((resolve) => {
@@ -1313,7 +1313,7 @@ async function findAvailablePort (startPort = 7979) {
 }
 
 // Development server - matches server.js from gulp
-async function startServer () {
+async function startServer() {
 	try {
 		// Find an available port starting from 7979
 		const availablePort = await findAvailablePort(7979);
@@ -1378,7 +1378,7 @@ async function startServer () {
 }
 
 // Auto-deploy helper function
-async function autoDeployIfEnabled (fileType, changedPath) {
+async function autoDeployIfEnabled(fileType, changedPath) {
 	if (!autoDeployMode || !ftpConfig) return;
 
 	console.log(`🚀 Auto-deploy triggered for ${fileType} file: ${path.basename(changedPath)}`);
@@ -1395,7 +1395,7 @@ async function autoDeployIfEnabled (fileType, changedPath) {
 }
 
 // Enhanced file watchers with beautiful logging
-function setupWatchers () {
+function setupWatchers() {
 	// Watch JS files - optimized with debouncing
 	let jsTimeout = null;
 	chokidar.watch(['src/js/*.js'], { ignoreInitial: true }).on('change', async (changedPath) => {
@@ -1542,7 +1542,7 @@ function setupWatchers () {
 }
 
 // Build pages task - matches build-pages.js from gulp
-function updatePagesTask () {
+function updatePagesTask() {
 	try {
 		const pagesPath = "src/pages";
 		const pagesJsonPath = "pages.json";
@@ -1578,7 +1578,7 @@ function updatePagesTask () {
 }
 
 // Main execution logic - default to watch mode for development
-async function main () {
+async function main() {
 	const command = process.argv[2];
 
 	try {

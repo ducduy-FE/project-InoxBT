@@ -1,0 +1,27 @@
+section
+	.section-faqs(class="px-15 -md:px-4 ") 
+		+Breadcrumb-custom(["Trang chủ", "Hỗ trợ","FAQs"])(class="py-3 border-b ")
+	.main-content(class="py-20 xl:rem:px-[380px] px-3  md:px-5 md:py-7 lg:px-15 ")
+		h1(class="font-bold text-primary-1 title-48 text-center") FAQS
+		.main-faq 
+			ul.wrap-item-toggle
+				- for (let i = 0; i < 10; i++)
+					li.qa-drop.item-toggle(class="p-6 ")
+						.liner-border-b.title(class="flex justify-between p-3 bg-white.rounded-2 items-center  cursor-pointer")
+							div.flex.items-center.gap-2
+								h3.title-24.font-bold #{i===9 ? "" : "0"}#{i+1} Phân bón là gì? Tác dụng của những chất có trong phân bón?
+						.supmenu.format-content.px-6.py-5.hidden.body-16.text-gray-900
+							.flex(class="-md:flex-col gap-8")
+								.faq-img(class="w-[calc(357/922*100%)] -md:w-full")
+									.img-ratio(class="ratio:pt-[200_357]")
+										+PugImg()
+								.supmenu-content(class="body-18 text-gray-950 w-[calc(585/922*100%)] -md:w-full") 
+									p 
+										span(class="font-bold") Trả lời:
+										| Bác sĩ Ms.Rin Nguyen – Giám đốc chuyên môn Thẩm mỹ viện SHE sẽ giải đáp thắc mắc câu hỏi này.
+									p Hiện nay có 3 đường nâng ngực phổ biến nhất: Đường nách, Quầng vú, Chân ngực. Trong đó, nâng ngực đường nách là phương pháp khó nhất nhưng lại an toàn, đạt hiệu quả nhất trong phẫu thuật nâng ngực. Nâng ngực đường nách được đánh giá cao về mặt thẩm mỹ, không để lại sẹo trên vùng ngực, không ảnh hưởng đến mô tuyến vú cũng như cảm giác nơi đầu vú. Đặt túi ngực qua đường nách phù hợp với những đối tượng tuyến vú nhỏ, sa trễ nhẹ.
+									p Hiện nay có 3 đường nâng ngực phổ biến nhất: Đường nách, Quầng vú, Chân ngực. Trong đó, nâng ngực đường nách là phương pháp khó nhất nhưng lại an toàn, đạt hiệu quả nhất trong phẫu thuật nâng ngực. Nâng ngực đường nách được đánh giá cao về mặt thẩm mỹ, không để lại sẹo trên vùng ngực, không ảnh hưởng đến mô tuyến vú cũng như cảm giác nơi đầu vú. Đặt túi ngực qua đường nách phù hợp với những đối tượng tuyến vú nhỏ, sa trễ nhẹ.
+		.pagination-project(class="flex gap-6 justify-center py-6")
+			+btn-number(1)(class="text-white")
+			+btn-number(2)(class="bg-transparent border-primary-1 text-gray-500 hover:text-white hover:bg-primary-1 ")
+			+btn-number(3)(class="bg-transparent border-primary-1 text-gray-500 hover:text-white hover:bg-primary-1 duration-300  ")
