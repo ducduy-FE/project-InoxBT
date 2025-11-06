@@ -60,21 +60,27 @@ mixin HeaderLanguage()
 						a(href="") 
 							span EN
 mixin Breadcrumb-custom(items)
-	.flex.items-center(class="" +attributes.class)
+	.flex.items-center(class="" + attributes.class)
 		each item, i in items
 			- const isLast = i === items.length - 1
+			- const isFirst = i === 0
 			p(
 				class=[
 					'px-2 py-0', 
 					'body-18',
+					isFirst ? 'pl-15' : '',
 					isLast ? 'font-bold text-primary-1' : 'font-normal text-gray-700'
 				]
 			)= item
 			if !isLast
 				//- thanh ngăn cách ngắn giữa các phần tử
 				span(class="inline-block w-[1px] h-[13px] bg-gray-400 rounded mx-1")
+
 mixin BtnOutline(title)
 	a.btn-outline(href="/")= title 
 mixin BtnPrimary(title)
 	a.btn-primary(href="/")= title 
-
+mixin btn-number(title, active = false)
+	- const activeClass = active ? 'bg-primary-1 text-white' : 'bg-transparent border-primary-1 text-gray-500 hover:text-white hover:bg-primary-1 duration-300'
+	.btn.btn-number(class=`w-12 h-12 border flex justify-center items-center rounded-2 cursor-pointer ${activeClass}`)
+		p.title-20.font-bold= title

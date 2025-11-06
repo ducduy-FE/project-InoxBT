@@ -1,0 +1,53 @@
+section
+	+Breadcrumb-custom(["Trang chủ", "Hỗ trợ","Thư viện"])(class="py-3 border-b library-top  ")
+	.section-library(class="px-15 -md:px-4 ") 
+		.library-center(class="py-20 -md:py-10")
+			.title-library(class=" text-primary-1")
+				h1(class="title-48 font-bold text-center ") Thư viện ảnh và video
+			.wrap(data-toggle="tabslet")
+				ul.tabslet-tab.filter-img-video(class="flex ")
+					li.active
+						a(href="#tab-img") Hình ảnh
+					li(class="w-[1px] h-8 bg-gray-200")
+					li
+						a(href="#tab-video") Video
+				.tabslet-content.active#tab-img
+					.img-library
+						-for(let i = 0; i <3 ; i++)
+							.img-library-item(id="img-library")
+								.section-detail-2(class="bg-transparent py-10 px-0")
+									.swiper.swiper-install
+										.swiper-wrapper
+											-for(let i = 0 ; i<6; i++)
+												.swiper-slide
+													.card-instruct(class="flex flex-col gap-6 group cursor-pointer")
+														.card-img(class="max-w-[420px]  ") 
+															.img-ratio(class="ratio:pt-[280_420] relative")
+																+PugImg()(class="transition-300 group-hover:scale-110 ")
+																div(class="bg-black/50 absolute w-full h-full top-0 left-0 z-1 flex justify-center items-center group-hover:bg-transparent")
+																	<i class="fa-light fa-image text-white rem:text-[32px] group-hover:opacity-0"></i>
+														.card-content(class="flex gap-3")
+															a(href="") 
+																h2(class="title-24 font-bold text-gray-950 group-hover:text-primary-1 group-hover:underline") Inox Bình Tân cung cấp dịch vụ gia công kim loại tấm
+				.tabslet-content#tab-video
+					.img-library
+						-for(let i = 0; i <3 ; i++)
+							.img-library-item(id="img-library")
+								.section-detail-2(class="bg-transparent py-10 px-0")
+									.swiper.swiper-install
+										.swiper-wrapper
+											-for(let i = 0 ; i<6; i++)
+												.swiper-slide
+													.card-instruct(class="flex flex-col gap-6 group cursor-pointer ")
+														.card-img(class="max-w-[420px]  ") 
+															.img-ratio(class="ratio:pt-[280_420] relative ")
+																+PugImg()(class="transition-300 group-hover:scale-110  ")
+																div(class="bg-black/50 absolute w-full h-full top-0 left-0 z-1 flex justify-center items-center group-hover:bg-transparent")
+																	<i class="fa-light fa-play text-white rem:text-[32px] group-hover:opacity-0"></i>
+														.card-content(class="flex gap-3")
+															a(href="") 
+																h2(class="title-24 font-bold text-gray-950 group-hover:text-primary-1 group-hover:underline") Inox Bình Tân cung cấp dịch vụ gia công kim loại tấm
+			.pagination-project(class="flex gap-6 justify-center py-6")
+				+btn-number(1,true)
+				+btn-number(2)
+				+btn-number(3)

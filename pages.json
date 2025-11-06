@@ -18,8 +18,12 @@
       "src": "Contact.pug"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "src": "Home.pug"
+    },
+    {
+      "enabled": true,
+      "src": "introduce.pug"
     },
     {
       "enabled": false,
